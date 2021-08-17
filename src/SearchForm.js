@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 
-function SearchForm( {initialSearch, handleSearch}){
+function SearchForm({initialSearch, handleSearch}){
 
   const[search, setSearch] = useState(initialSearch)
 
@@ -18,16 +18,17 @@ function SearchForm( {initialSearch, handleSearch}){
     evt.preventDefault()
     handleSearch({...search})
   }
+
   return (
     <div className="Search">
       <form className="Search-bar" onSubmit={handleSubmit}>
           <input 
              id="search-bar-query"
-             name="search"
+             name="name"
              className="form-control"
              placeholder="Title"
              onChange={handleChange}
-             value={search.search}
+             value={search.name}
           />
       </form>
     </div>

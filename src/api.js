@@ -24,6 +24,7 @@ class JoblyApi {
         : {};
 
     try {
+      console.log("HERE", url, method, data, headers, params )
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
       console.error("API Error:", err.response);
@@ -39,6 +40,18 @@ class JoblyApi {
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;
+  }
+
+  static async getAllCompanies() {
+    let res = await this.request(`companies`);
+    console.log("RES 1", res);
+    return res.companies;
+  }
+
+  static async filterCompanies(searchTerm) {
+    let res = await this.request(`companies`, searchTerm);
+    console.log("RES 2", res);
+    return res.companies;
   }
 
   // obviously, you'll add a lot here ...

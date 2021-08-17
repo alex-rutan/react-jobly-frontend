@@ -1,11 +1,11 @@
 import React from "react";
 
-function ProfileForm() {
+function LoginForm() {
   return (
     <div>
-
+      Login
     </div>
   )
 }
 
-export default ProfileForm;
+export default LoginForm;

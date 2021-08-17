@@ -2,7 +2,7 @@ APP
   state = isUser
 
   Nav
-  props = isUser 
+  props = isUser , logout function to be placed on to logout button
 
   Routes
   props = isUSer
@@ -60,5 +60,3 @@ APP
 
 
     Loading Spinner?
-
-    

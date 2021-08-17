@@ -16,7 +16,7 @@ function Routes() {
       </Route>
       <Route exact path="/companies">
         <CompaniesContainer />
-      </Route>
+      </Route>  
       <Route exact path="/jobs">
         <JobsContainer />
       </Route>

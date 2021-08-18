@@ -5,6 +5,7 @@ import React from "react";
  * props: job{title,salary,equity,companyHandle}
  *
  * [JobsContainer, JobList] -> JobCard
+ * 
  */
 
 //TODO add application button

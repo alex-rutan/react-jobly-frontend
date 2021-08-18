@@ -3,7 +3,6 @@ import JobCard from "./JobCard";
 
 
 function JobList( {jobs} ) {
-  console.log(jobs, "JObList")
   return (
     <div>
       {jobs.map(j => (

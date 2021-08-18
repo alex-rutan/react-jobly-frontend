@@ -19,6 +19,8 @@ function SearchForm({initialSearch, handleSearch}){
     handleSearch({...search})
   }
 
+  function titleOrName() {}
+
   return (
     <div className="Search">
       <form className="Search-bar" onSubmit={handleSubmit}>

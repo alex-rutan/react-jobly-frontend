@@ -52,6 +52,16 @@ class JoblyApi {
     return res.companies;
   }
 
+  static async filterJobs(searchTerm) {
+    let res;
+    if (!searchTerm.title){
+      res = await this.request(`jobs`);
+    }else{
+      res = await this.request(`jobs`, searchTerm);
+    }
+    return res.jobs;
+  }
+
   // obviously, you'll add a lot here ...
 
 

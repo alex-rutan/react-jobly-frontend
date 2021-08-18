@@ -1,12 +1,11 @@
-import { Switch, Route, Redirect } from "react-router-dom"
-import CompanyDetails from "./CompanyDetails"
-import CompaniesContainer from "./CompaniesContainer"
-import JobsContainer from "./JobsContainer"
-import ProfileForm from "./ProfileForm"
-import LoginForm from "./LoginForm"
-import SignUpForm from "./SignUpForm"
-import HomePage from "./HomePage"
-
+import { Switch, Route, Redirect } from "react-router-dom";
+import CompanyDetails from "./CompanyDetails";
+import CompaniesContainer from "./CompaniesContainer";
+import JobsContainer from "./JobsContainer";
+import ProfileForm from "./ProfileForm";
+import LoginForm from "./LoginForm";
+import SignUpForm from "./SignUpForm";
+import HomePage from "./HomePage";
 
 function Routes() {
   return (
@@ -16,7 +15,7 @@ function Routes() {
       </Route>
       <Route exact path="/companies">
         <CompaniesContainer />
-      </Route>  
+      </Route>
       <Route exact path="/jobs">
         <JobsContainer />
       </Route>
@@ -36,7 +35,5 @@ function Routes() {
     </Switch>
   );
 }
-
-
 
 export default Routes;

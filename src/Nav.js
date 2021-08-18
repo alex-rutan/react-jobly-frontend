@@ -30,7 +30,7 @@ function Nav({isLogin}) {
         <NavLink exact to="/profile">
           Profile
         </NavLink>
-        <NavLink onCLick exact to="/">
+        <NavLink exact to="/">
         </NavLink>
       </nav>
     :

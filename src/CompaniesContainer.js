@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "./api";
-import SearchForm from "./SearchForm"
-import CompanyList from "./CompanyList"
+import SearchForm from "./SearchForm";
+import CompanyList from "./CompanyList";
 
-
-
+/**
+ * Handles SearchForm and CompaniesList
+ *
+ *  state: searchTerm, companiesList
+ */
 function CompaniesContainer() {
-  const [searchTerm, setSearchTerm] = useState({name:""})
-  const [companiesList, setCompaniesList] = useState([])
+  const [searchTerm, setSearchTerm] = useState({ name: "" });
+  const [companiesList, setCompaniesList] = useState([]);
 
-  useEffect(function getCompanies() {
-    async function getCompaniesResponse() {
-      let companies = await JoblyApi.filterCompanies(searchTerm);
-      setCompaniesList(companies);
-      //TODO add loading spinner?
-    };
-    getCompaniesResponse();
-  }, [searchTerm]);
+  // makes request to the server for a list of companies based off seachterm
+  useEffect(
+    function getCompanies() {
+      async function getCompaniesResponse() {
+        let companies = await JoblyApi.filterCompanies(searchTerm);
+        setCompaniesList(companies);
+        //TODO add loading spinner?
+      }
+      getCompaniesResponse();
+    },
+    [searchTerm]
+  );
 
   function handleSearch(search) {
     setSearchTerm(search);
@@ -24,10 +31,10 @@ function CompaniesContainer() {
 
   return (
     <div>
-      <SearchForm initialSearch={""} handleSearch={handleSearch} />
+      <SearchForm initialSearch={searchTerm} handleSearch={handleSearch} />
       <CompanyList companies={companiesList} />
     </div>
-  )
+  );
 }
 
 export default CompaniesContainer;

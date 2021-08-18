@@ -1,40 +1,53 @@
-import React, {useState} from "react";
-import axios from "axios";
+import React, { useState } from "react";
 
-function SearchForm({initialSearch, handleSearch}){
+/**
+ *Renders and control form for search value to be used in parent componene's filter
+ *
+ *props: intialSearch, handleSearch(see parent)
+ *state: search
+ *
+ *[JobsContainer, CompaniesContainer] -> SearchForm
+ */
+function SearchForm({ initialSearch, handleSearch }) {
+  const [search, setSearch] = useState(initialSearch);
 
-  const[search, setSearch] = useState(initialSearch)
-
-  function handleChange(evt){
-
+  function handleChange(evt) {
     const { name, value } = evt.target;
-    setSearch(sData => ({
+    setSearch((sData) => ({
       ...sData,
-      [name]: value
+      [name]: value,
     }));
   }
 
-  function handleSubmit(evt){
-    evt.preventDefault()
-    handleSearch({...search})
+  // Sends search back to parent component
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    handleSearch({ ...search });
   }
 
-  function titleOrName() {}
+  //specifies key of the search value
+  //ternery operator based off prop passing through
+  function titleOrName(initialSearch) {
+    let placeholder = Object.keys(initialSearch)[0];
+    return placeholder;
+  }
+
+  let filterkey = titleOrName(initialSearch);
 
   return (
     <div className="Search">
       <form className="Search-bar" onSubmit={handleSubmit}>
-          <input 
-             id="search-bar-query"
-             name="name"
-             className="form-control"
-             placeholder="Title"
-             onChange={handleChange}
-             value={search.name}
-          />
+        <input
+          id="search-bar-query"
+          name={filterkey}
+          className="form-control"
+          placeholder={filterkey}
+          onChange={handleChange}
+          value={search.filterkey}
+        />
       </form>
     </div>
-  )
+  );
 }
 
 export default SearchForm;

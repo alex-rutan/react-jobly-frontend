@@ -19,12 +19,10 @@ class JoblyApi {
 
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
-    const params = (method === "get")
-        ? data
-        : {};
+    const params = method === "get" ? data : {};
 
     try {
-      console.log("HERE", url, method, data, headers, params )
+      console.log("HERE", url, method, data, headers, params);
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
       console.error("API Error:", err.response);
@@ -42,36 +40,35 @@ class JoblyApi {
     return res.company;
   }
 
+  /**Get and Filter a list of companies based off searchterm, */
   static async filterCompanies(searchTerm) {
     let res;
-    if (!searchTerm.name){
+    if (!searchTerm.name) {
       res = await this.request(`companies`);
-    }else{
+    } else {
       res = await this.request(`companies`, searchTerm);
     }
     return res.companies;
   }
 
+  /**Get and Filter a list of jobs based off searchterm, */
   static async filterJobs(searchTerm) {
     let res;
-    if (!searchTerm.title){
+    if (!searchTerm.title) {
       res = await this.request(`jobs`);
-    }else{
+    } else {
       res = await this.request(`jobs`, searchTerm);
     }
     return res.jobs;
   }
 
   // obviously, you'll add a lot here ...
-
-
-
 }
 
 // for now, put token ("testuser" / "password" on class)
-JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+JoblyApi.token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+  "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+  "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
-
-export default JoblyApi
+export default JoblyApi;

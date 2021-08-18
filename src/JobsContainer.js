@@ -1,25 +1,30 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "./api";
-import SearchForm from "./SearchForm"
-import JobList from "./JobList"
+import SearchForm from "./SearchForm";
+import JobList from "./JobList";
 
-
+/**
+ * Handles SearchForm and JobsList
+ *
+ *  state: searchTerm, jobsList
+ */
 
 function JobsContainer() {
-  const [searchTerm, setSearchTerm] = useState({name:""})
-  const [jobsList, setJobsList] = useState([])
+  const [searchTerm, setSearchTerm] = useState({ title: "" });
+  const [jobsList, setJobsList] = useState([]);
 
-  useEffect(function getJobs() {
-    async function getJobsResponse() {
-      // TODO: fix the janky current fix for title vs. name
-      let search = {}
-      search.title = searchTerm.name;
-      let jobs = await JoblyApi.filterJobs(search);
-      setJobsList(jobs);
-      //TODO add loading spinner?
-    };
-    getJobsResponse();
-  }, [searchTerm]);
+  // makes request to the server for a list of jobs based off seachterm
+  useEffect(
+    function getJobs() {
+      async function getJobsResponse() {
+        let jobs = await JoblyApi.filterJobs(searchTerm);
+        setJobsList(jobs);
+        //TODO add loading spinner?
+      }
+      getJobsResponse();
+    },
+    [searchTerm]
+  );
 
   function handleSearch(search) {
     setSearchTerm(search);
@@ -27,10 +32,10 @@ function JobsContainer() {
 
   return (
     <div>
-      <SearchForm initialSearch={""} handleSearch={handleSearch} />
+      <SearchForm initialSearch={searchTerm} handleSearch={handleSearch} />
       <JobList jobs={jobsList} />
     </div>
-  )
+  );
 }
 
 export default JobsContainer;

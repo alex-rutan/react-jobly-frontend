@@ -1,5 +1,5 @@
 import { Switch, Route, Redirect } from "react-router-dom"
-import Company from "./Company"
+import CompanyDetails from "./CompanyDetails"
 import CompaniesContainer from "./CompaniesContainer"
 import JobsContainer from "./JobsContainer"
 import ProfileForm from "./ProfileForm"
@@ -12,7 +12,7 @@ function Routes() {
   return (
     <Switch>
       <Route exact path="/companies/:handle">
-        <Company />
+        <CompanyDetails />
       </Route>
       <Route exact path="/companies">
         <CompaniesContainer />

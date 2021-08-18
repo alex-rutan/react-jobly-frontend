@@ -6,20 +6,13 @@ import CompanyList from "./CompanyList"
 
 
 function CompaniesContainer() {
-  const [searchTerm, setSearchTerm] = useState()
+  const [searchTerm, setSearchTerm] = useState({name:""})
   const [companiesList, setCompaniesList] = useState([])
 
   useEffect(function getCompanies() {
     async function getCompaniesResponse() {
-      let companies;
-      if (searchTerm === "") {
-        companies = await JoblyApi.getAllCompanies();
-      } else {
-        companies = await JoblyApi.filterCompanies(searchTerm);
-      }
-      console.log("WE MADE IT", companies)
+      let companies = await JoblyApi.filterCompanies(searchTerm);
       setCompaniesList(companies);
-      
       //TODO add loading spinner?
     };
     getCompaniesResponse();

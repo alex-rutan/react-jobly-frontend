@@ -42,15 +42,13 @@ class JoblyApi {
     return res.company;
   }
 
-  static async getAllCompanies() {
-    let res = await this.request(`companies`);
-    console.log("RES 1", res);
-    return res.companies;
-  }
-
   static async filterCompanies(searchTerm) {
-    let res = await this.request(`companies`, searchTerm);
-    console.log("RES 2", res);
+    let res;
+    if (!searchTerm.name){
+      res = await this.request(`companies`);
+    }else{
+      res = await this.request(`companies`, searchTerm);
+    }
     return res.companies;
   }
 

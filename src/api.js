@@ -64,6 +64,16 @@ class JoblyApi {
     return res.jobs;
   }
 
+  static async login( loginUserData ){
+    
+    const res = await axios.post(
+      `${BASE_URL}/auth/token`,
+      loginUserData 
+    )
+    console.log(res, " JOBLYAPI")
+    return res.data.token
+  }
+
   // obviously, you'll add a lot here ...
 }
 

@@ -1,0 +1,14 @@
+
+.JobCard {
+  margin: auto;
+}
+
+.JobCard a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.JobCard a:hover {
+  color: #646464;
+  text-decoration: none;
+}

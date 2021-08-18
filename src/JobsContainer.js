@@ -10,7 +10,7 @@ import JobList from "./JobList";
  */
 
 function JobsContainer() {
-  const [searchTerm, setSearchTerm] = useState({ title: "" });
+  const [searchTerm, setSearchTerm] = useState("");
   const [jobsList, setJobsList] = useState([]);
 
   // makes request to the server for a list of jobs based off seachterm
@@ -31,8 +31,12 @@ function JobsContainer() {
   }
 
   return (
-    <div>
-      <SearchForm initialSearch={searchTerm} handleSearch={handleSearch} />
+    <div className="CompaniesContainer" style={{
+      display: "flex",
+      alignItems: "center",
+      flexDirection: "column"
+    }}>
+      <SearchForm initialSearch={searchTerm} handleSearch={handleSearch} formType="job"/>
       <JobList jobs={jobsList} />
     </div>
   );

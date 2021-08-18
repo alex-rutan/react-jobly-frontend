@@ -43,10 +43,11 @@ class JoblyApi {
   /**Get and Filter a list of companies based off searchterm, */
   static async filterCompanies(searchTerm) {
     let res;
-    if (!searchTerm.name) {
+    let data = {name: searchTerm}
+    if (searchTerm === "") {
       res = await this.request(`companies`);
     } else {
-      res = await this.request(`companies`, searchTerm);
+      res = await this.request(`companies`, data);
     }
     return res.companies;
   }
@@ -54,10 +55,11 @@ class JoblyApi {
   /**Get and Filter a list of jobs based off searchterm, */
   static async filterJobs(searchTerm) {
     let res;
-    if (!searchTerm.title) {
+    let data = {title: searchTerm}
+    if (searchTerm === "") {
       res = await this.request(`jobs`);
     } else {
-      res = await this.request(`jobs`, searchTerm);
+      res = await this.request(`jobs`, data);
     }
     return res.jobs;
   }

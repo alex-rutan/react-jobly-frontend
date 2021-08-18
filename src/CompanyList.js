@@ -11,7 +11,7 @@ import CompanyCard from "./CompanyCard";
 //TODO use uuid for key
 function CompanyList({ companies }) {
   return (
-    <div>
+    <div className="CompanyList" >
       {companies.map((c) => (
         <CompanyCard key={c.handle} company={c} />
       ))}

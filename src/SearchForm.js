@@ -8,42 +8,31 @@ import React, { useState } from "react";
  *
  *[JobsContainer, CompaniesContainer] -> SearchForm
  */
-function SearchForm({ initialSearch, handleSearch }) {
+function SearchForm({ initialSearch, handleSearch, formType }) {
   const [search, setSearch] = useState(initialSearch);
 
   function handleChange(evt) {
-    const { name, value } = evt.target;
-    setSearch((sData) => ({
-      ...sData,
-      [name]: value,
-    }));
+    const { value } = evt.target;
+    setSearch(value);
   }
 
   // Sends search back to parent component
   function handleSubmit(evt) {
     evt.preventDefault();
-    handleSearch({ ...search });
+    handleSearch(search);
   }
-
-  //specifies key of the search value
-  //ternery operator based off prop passing through
-  function titleOrName(initialSearch) {
-    let placeholder = Object.keys(initialSearch)[0];
-    return placeholder;
-  }
-
-  let filterkey = titleOrName(initialSearch);
 
   return (
-    <div className="Search">
+    <div className="SearchForm" style={{padding: "8px"}}>
       <form className="Search-bar" onSubmit={handleSubmit}>
         <input
+          style={{width: '600px'}}
           id="search-bar-query"
-          name={filterkey}
+          name="search-bar"
           className="form-control"
-          placeholder={filterkey}
+          placeholder={`Enter ${formType} search..`}
           onChange={handleChange}
-          value={search.filterkey}
+          value={search}
         />
       </form>
     </div>

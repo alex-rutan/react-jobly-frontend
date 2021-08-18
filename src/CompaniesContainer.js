@@ -9,7 +9,7 @@ import CompanyList from "./CompanyList";
  *  state: searchTerm, companiesList
  */
 function CompaniesContainer() {
-  const [searchTerm, setSearchTerm] = useState({ name: "" });
+  const [searchTerm, setSearchTerm] = useState("");
   const [companiesList, setCompaniesList] = useState([]);
 
   // makes request to the server for a list of companies based off seachterm
@@ -30,9 +30,13 @@ function CompaniesContainer() {
   }
 
   return (
-    <div>
-      <SearchForm initialSearch={searchTerm} handleSearch={handleSearch} />
-      <CompanyList companies={companiesList} />
+    <div className="CompaniesContainer" style={{
+      display: "flex",
+      alignItems: "center",
+      flexDirection: "column"
+    }}>
+        <SearchForm initialSearch={searchTerm} handleSearch={handleSearch} formType="company" />
+        <CompanyList companies={companiesList} />
     </div>
   );
 }

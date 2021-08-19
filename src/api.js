@@ -65,13 +65,24 @@ class JoblyApi {
   }
 
   static async login( loginUserData ){
-    
-    const res = await axios.post(
-      `${BASE_URL}/auth/token`,
-      loginUserData 
-    )
-    console.log(res, " JOBLYAPI")
-    return res.data.token
+    const res = await this.request("auth/token", loginUserData, "post");
+
+    console.log(res, " JOBLYAPI login")
+    return res.token;
+  }
+
+  static async register(userData) {
+    const res = await this.request("auth/register", userData, "post");
+
+    console.log(res, " JOBLYAPI signup")
+    return res.token;
+  }
+
+  static async getUserInfo(username) {
+    const res = await this.request(`users/${username}`, username);
+
+    console.log(res, " JOBLYAPI getUser");
+    return res.user;
   }
 
   // obviously, you'll add a lot here ...

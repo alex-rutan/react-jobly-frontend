@@ -17,6 +17,7 @@ function LoginForm( {login} ) {
   function handleSubmit(evt) {
     evt.preventDefault();
     login( loginInfo );
+    
   }
 
 
@@ -31,6 +32,7 @@ function LoginForm( {login} ) {
         placeholder="Username"
         onChange={handleChange}
         value={loginInfo.username}
+        required
       />
       <input
         style={{width: '400px'}}
@@ -40,6 +42,7 @@ function LoginForm( {login} ) {
         placeholder="Password"
         onChange={handleChange}
         value={loginInfo.password}
+        required
       />
       <button>Log In</button>
     </form>

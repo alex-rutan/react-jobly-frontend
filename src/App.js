@@ -37,7 +37,9 @@ function App() {
     function getCurrUser() {
       async function getCurrUserResponse() {
         let user = await JoblyApi.getUserInfo(authUserInfo.username);
-        setCurrentUser(user);
+        if (user){
+          setCurrentUser(user);
+        }
       }
       if (token) {
         getCurrUserResponse();
@@ -61,7 +63,8 @@ function App() {
     setToken(null);
   }
 
-  console.log(token, currentUser, authUserInfo, "ON RENDERS")
+
+  console.log( currentUser, "ON RENDERS")
   return (
     <UserContext.Provider value={{currentUser, login, signup, logout}}>
       <div className="App">

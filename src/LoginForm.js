@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 
+
 function LoginForm( {login} ) {
 
   const[loginInfo, setLoginInfo] = useState({username:"", password:""})
-
   
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -17,6 +17,7 @@ function LoginForm( {login} ) {
   function handleSubmit(evt) {
     evt.preventDefault();
     login( loginInfo );
+
     
   }
 

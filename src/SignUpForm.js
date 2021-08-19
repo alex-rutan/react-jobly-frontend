@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function SignUpForm( {signUp} ) {
+function SignUpForm( {signup} ) {
 
   const[signUpInfo, setSignUpInfo] = useState({username:"", password:""})
 
@@ -16,7 +16,7 @@ function SignUpForm( {signUp} ) {
   // Sends search back to parent component
   function handleSubmit(evt) {
     evt.preventDefault();
-    signUp(signUpInfo);
+    signup(signUpInfo);
   }
 
 

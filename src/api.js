@@ -43,7 +43,7 @@ class JoblyApi {
   /**Get and Filter a list of companies based off searchterm, */
   static async filterCompanies(searchTerm) {
     let res;
-    let data = {name: searchTerm}
+    let data = { name: searchTerm };
     if (searchTerm === "") {
       res = await this.request(`companies`);
     } else {
@@ -55,7 +55,7 @@ class JoblyApi {
   /**Get and Filter a list of jobs based off searchterm, */
   static async filterJobs(searchTerm) {
     let res;
-    let data = {title: searchTerm}
+    let data = { title: searchTerm };
     if (searchTerm === "") {
       res = await this.request(`jobs`);
     } else {
@@ -64,7 +64,7 @@ class JoblyApi {
     return res.jobs;
   }
 
-  static async login( loginUserData ){
+  static async login(loginUserData) {
     const res = await this.request("auth/token", loginUserData, "post");
 
     console.log(res, " JOBLYAPI login")

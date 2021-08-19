@@ -17,11 +17,10 @@ import UserContext from "./UserContext";
 function Routes() {
   //private route -> usercontext {props.childre}
   const { currentUser } = useContext(UserContext);
-  const token = localStorage.getItem("jobly-token");
-
+  // const token = localStorage.getItem("jobly-token");
   return (
     <div className="Routes">
-      {currentUser && token ?
+      {currentUser?
         <Switch>
           <Route exact path="/companies/:handle">
             <CompanyDetails />

@@ -1,4 +1,9 @@
+import { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+// import CompanyDetails from "./CompanyDetails";
+// import CompaniesContainer from "./CompaniesContainer";
+// import JobsContainer from "./JobsContainer";
+// import ProfileForm from "./ProfileForm";
 import CompanyDetails from "./CompanyDetails";
 import CompaniesContainer from "./CompaniesContainer";
 import JobsContainer from "./JobsContainer";
@@ -6,36 +11,48 @@ import ProfileForm from "./ProfileForm";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import HomePage from "./HomePage";
+import PrivateRoute from "./PrivateRoute"
+import UserContext from "./UserContext";
 
 function Routes() {
   //private route -> usercontext {props.childre}
+  const { currentUser } = useContext(UserContext);
+  const token = localStorage.getItem("jobly-token");
 
   return (
-    <Switch>
-      
-      <Route exact path="/companies/:handle">
-        <CompanyDetails />
-      </Route>
-      <Route exact path="/companies">
-        <CompaniesContainer />
-      </Route>
-      <Route exact path="/jobs">
-        <JobsContainer />
-      </Route>
-      <Route exact path="/profile">
-        <ProfileForm />
-      </Route>
-      <Route exact path="/login">
-        <LoginForm />
-      </Route>
-      <Route exact path="/signup">
-        <SignUpForm />
-      </Route>
-      <Route exact path="/">
-        <HomePage />
-      </Route>
-      <Redirect to="/" />
-    </Switch>
+    <div className="Routes">
+      {currentUser && token ?
+        <Switch>
+          <Route exact path="/companies/:handle">
+            <CompanyDetails />
+          </Route>
+          <Route exact path="/companies">
+            <CompaniesContainer />
+          </Route>
+          <Route exact path="/jobs">
+            <JobsContainer />
+          </Route>
+          <Route exact path="/profile">
+            <ProfileForm />
+          </Route>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+        : <Switch>
+          <Route exact path="/login">
+            <LoginForm />
+          </Route>
+          <Route exact path="/signup">
+            <SignUpForm />
+          </Route>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Redirect to="/" />
+        </Switch>}
+    </div>
   );
 }
 

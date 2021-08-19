@@ -43,6 +43,7 @@ function App() {
         }
       }
       if (token) {
+        localStorage.setItem('jobly-token', token);
         getCurrUserResponse();
       }
     },
@@ -74,6 +75,7 @@ function App() {
   function logout() {
     setCurrentUser(null);
     setToken(null);
+    localStorage.removeItem('jobly-token');
   }
 
   return (

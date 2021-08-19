@@ -5,6 +5,8 @@ import UserContext from "./UserContext";
 //TODO renders out text while login or asks to login or signup if no currentuser
 function HomePage() {
   const { currentUser } = useContext(UserContext);
+
+  console.log(currentUser)
   return (
     <div>
       {currentUser ?
@@ -26,7 +28,6 @@ function HomePage() {
         </div>
       }
     </div>
-
   )
 }
 

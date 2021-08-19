@@ -8,27 +8,33 @@ import UserContext from "./UserContext";
 import jwt from 'jsonwebtoken'
 
 function App() {
-
   const [currentUser, setCurrentUser] = useState();
-  const [token, setToken] = useState( null );
+  const [token, setToken] = useState(localStorage.getItem("jobly-token") || null);
 
-
-  let history = useHistory();
+  const history = useHistory();
 
   /**updates currentuser if valid token */
-
+  useEffect(
+    function setLocalStorageToken() {
+      if (token === null) {
+        localStorage.removeItem("jobly-token");
+      } else {
+        localStorage.setItem("jobly-token", token)
+      }
+    }, [token]
+  );
 
   useEffect(
     function getCurrUser() {
       async function getCurrUserResponse() {
-        const username = jwt.decode(token).username
-        let user = await JoblyApi.getUserInfo(username);
-        setCurrentUser(user);
+        if (token) {
+          JoblyApi.token = token;
+          const { username } = jwt.decode(token)
+          let user = await JoblyApi.getUserInfo(username);
+          setCurrentUser(user);
+        }
       }
-      if (token) {
-        localStorage.setItem('jobly-token', token);
-        getCurrUserResponse();
-      }
+      getCurrUserResponse();
     },
     [token]
   );
@@ -37,7 +43,7 @@ function App() {
   async function login(loginUserInfo) {
     // setAuthUserInfo(loginUserInfo);
     const newToken = await JoblyApi.login(loginUserInfo);
-    if (newToken){
+    if (newToken) {
       setToken(newToken);
       history.push("/companies");
     }
@@ -56,7 +62,7 @@ function App() {
   function logout() {
     setCurrentUser(null);
     setToken(null);
-    localStorage.removeItem('jobly-token');
+    localStorage.removeItem("jobly-token");
   }
 
   return (

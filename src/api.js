@@ -68,8 +68,8 @@ class JoblyApi {
     const res = await this.request("auth/token", loginUserData, "post");
 
     console.log(res, " JOBLYAPI login")
-    console.log("ABOUT TO SET JOBLY API TOKEN")
-    this.token = res.token;
+    // console.log("ABOUT TO SET JOBLY API TOKEN")
+    // this.token = res.token;
     return res.token;
   }
 
@@ -77,8 +77,8 @@ class JoblyApi {
     const res = await this.request("auth/register", userData, "post");
 
     console.log(res, " JOBLYAPI signup")
-    console.log("ABOUT TO SET JOBLY API TOKEN")
-    this.token = res.token;
+    // console.log("ABOUT TO SET JOBLY API TOKEN")
+    // this.token = res.token;
     return res.token;
   }
 

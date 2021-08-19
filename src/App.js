@@ -7,71 +7,84 @@ import JoblyApi from "./api";
 import UserContext from "./UserContext";
 
 function App() {
-  const [authUserInfo, setAuthUserInfo] = useState();
+  // TODO keep track of form data on forms make an atempt to update currentuser on the form if valid.
+  // const [authUserInfo, setAuthUserInfo] = useState();
   const [currentUser, setCurrentUser] = useState();
   // when authUser changes, that's when use effect get token
   const [token, setToken] = useState(null);
 
   let history = useHistory();
 
-  console.log(token);
+  /**Gets a token from api register or login*/
+  // useEffect(
+  //   function getToken() {
+  //     async function getTokenResponse() {
+  //       let newToken;
+  //       if (authUserInfo.email) {
+  //         newToken = await JoblyApi.register(authUserInfo);
+  //         // if(newToken) history.push("localhost:3000/");
+  //       } else if (authUserInfo.username) {
+  //         newToken = await JoblyApi.login(authUserInfo);
+  //       }
+  //       setToken(newToken);
+  //     }
+  //     if (authUserInfo) getTokenResponse();
+  //   },
+  //   [authUserInfo]
+  // );
 
-  useEffect(
-    function getToken() {
-      async function getTokenResponse() {
-        let newToken;
-        if (authUserInfo.email) {
-          newToken = await JoblyApi.register(authUserInfo);
-          // if(newToken) history.push("localhost:3000/");
-        } else if (authUserInfo.username) {
-          newToken = await JoblyApi.login(authUserInfo);
-        }
-        setToken(newToken);
-      }
-      if (authUserInfo) getTokenResponse();
-    },
-    [authUserInfo]
-  );
-
+  /**updates currentuser if valid token */
   useEffect(
     function getCurrUser() {
       async function getCurrUserResponse() {
-        let user = await JoblyApi.getUserInfo(authUserInfo.username);
-        if (user){
+        let user = await JoblyApi.getUserInfo(currentUser.username);
+        if (user) {
           setCurrentUser(user);
         }
       }
       if (token) {
         getCurrUserResponse();
-        history.push("/");
       }
     },
     [token]
   );
 
-  function login(loginUserInfo) {
-    setAuthUserInfo(loginUserInfo);
+  //make requests in the login/singup
+  async function login(loginUserInfo) {
+    // setAuthUserInfo(loginUserInfo);
+    const newToken = await JoblyApi.login(loginUserInfo);
+    if (newToken){
+      setCurrentUser({ username: loginUserInfo.username });
+      setToken(newToken);
+      history.push("/companies");
+    }
   }
 
-  function signup(userInfo) {
-    setAuthUserInfo(userInfo);
+  async function signup(userInfo) {
+    // setAuthUserInfo(userInfo);
+    const newToken = await JoblyApi.register(userInfo);
+
+    if (newToken) {
+      setCurrentUser({ username: userInfo.username });
+      setToken(newToken);
+      history.push("/companies");
+    }
   }
 
   function logout() {
     setCurrentUser(null);
-    setAuthUserInfo(null);
     setToken(null);
   }
 
-
-  console.log( currentUser, "ON RENDERS")
   return (
-    <UserContext.Provider value={{currentUser, login, signup, logout}}>
+    <UserContext.Provider value={{ currentUser, login, signup, logout }}>
+      {/* <BrowserRouter> */}
       <div className="App">
         <Nav />
         <Routes />
       </div>
-    </UserContext.Provider >
+      {/* </BrowserRouter> */}
+    </UserContext.Provider>
   );
 }
 

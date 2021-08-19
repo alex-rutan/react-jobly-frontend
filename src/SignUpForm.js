@@ -1,10 +1,17 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import UserContext from "./UserContext";
+// import { useHistory } from "react-router-dom";
 
 function SignUpForm() {
+  // let history = useHistory()
   const { signup } = useContext(UserContext);
-  const [signUpInfo, setSignUpInfo] = useState(
-    { username: "", password: "", firstName:"", lastName:"",email:"" });
+  const [signUpInfo, setSignUpInfo] = useState({
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -13,11 +20,11 @@ function SignUpForm() {
       [name]: value,
     }));
   }
-
   // Sends search back to parent component
   function handleSubmit(evt) {
     evt.preventDefault();
     signup(signUpInfo);
+    // if(currentUser) history.push("/companies")
   }
 
   return (

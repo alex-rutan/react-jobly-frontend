@@ -13,8 +13,9 @@ import UserContext from "./UserContext";
 //TODO pass logout function through the nav props
 // and add it as an onclick event on the logout button
 function Nav() {
+
   const { logout, currentUser } = useContext(UserContext);
-  
+  console.log(currentUser,"Nasv")
   return (
     <div className="Navbar">
     {currentUser

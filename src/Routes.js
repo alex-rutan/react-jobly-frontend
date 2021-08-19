@@ -8,8 +8,11 @@ import SignUpForm from "./SignUpForm";
 import HomePage from "./HomePage";
 
 function Routes() {
+  //private route -> usercontext {props.childre}
+
   return (
     <Switch>
+      
       <Route exact path="/companies/:handle">
         <CompanyDetails />
       </Route>

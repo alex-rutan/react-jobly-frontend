@@ -1,13 +1,5 @@
-import React, { useState } from "react";
-import Nav from "./Nav";
-import Route from "./Routes"
+import React from "react";
 
-import CurrentUserContext from "./CurrentUserContext";
-import { NavigationRoute } from "workbox-routing";
+const UserContext = React.createContext();
 
-
-function UserContext(){
-
-
-
-}
+export default UserContext;

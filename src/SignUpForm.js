@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
+import UserContext from "./UserContext";
 
-function SignUpForm( {signup} ) {
+function SignUpForm() {
 
+  const { signup } = useContext(UserContext);
   const[signUpInfo, setSignUpInfo] = useState({username:"", password:""})
 
   

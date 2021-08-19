@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
 import "bootstrap/dist/css/bootstrap.css";
+import UserContext from "./UserContext";
 
 
 /** Nav: navbar for each page
@@ -11,11 +12,12 @@ import "bootstrap/dist/css/bootstrap.css";
  */
 //TODO pass logout function through the nav props
 // and add it as an onclick event on the logout button
-function Nav({isLogin}) {
+function Nav() {
+  const { logout, currentUser } = useContext(UserContext);
   
   return (
     <div className="Navbar">
-    {isLogin
+    {currentUser
       ?
       <nav className="Nav navbar navbar-expand-lg navbar-light bg-light">
         <NavLink exact to="/" className="navbar-brand">
@@ -30,7 +32,8 @@ function Nav({isLogin}) {
         <NavLink exact to="/profile" className="nav-link">
           Profile
         </NavLink>
-        <NavLink exact to="/" className="nav-link">
+        <NavLink exact to="/" className="nav-link" onClick={logout}>
+          Log Out {currentUser.firstName}
         </NavLink>
       </nav>
     :

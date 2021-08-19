@@ -1,9 +1,11 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
+import UserContext from "./UserContext";
 
 
-function LoginForm( {login} ) {
+function LoginForm() {
 
-  const[loginInfo, setLoginInfo] = useState({username:"", password:""})
+  const { login } = useContext(UserContext);
+  const [loginInfo, setLoginInfo] = useState({username:"", password:""})
   
   function handleChange(evt) {
     const { name, value } = evt.target;

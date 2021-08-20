@@ -13,6 +13,7 @@ function App() {
     localStorage.getItem("jobly-token") || null
   );
   const [isLoading, setIsloading] = useState(false);
+  const [applicationIDs, setApplicationIDs] = useState(new Set([]))
 
   const history = useHistory();
 
@@ -37,6 +38,7 @@ function App() {
           let user = await JoblyApi.getUserInfo(username);
           setCurrentUser(user);
           setIsloading(true);
+          setApplicationIDs(user.applications)
         }
       }
       getCurrUserResponse();
@@ -70,17 +72,24 @@ function App() {
     setCurrentUser(user);
   }
 
+  async function apply(jobID) {
+    // setAuthUserInfo(userInfo);
+    await JoblyApi.apply(jobID);
+    setApplicationIDs(new Set([...applicationIDs, jobID]));
+  }
+
   function logout() {
     setCurrentUser(null);
     setToken(null);
     localStorage.removeItem("jobly-token");
   }
 
+  console.log(applicationIDs ,"APPPPPP")
   if (!isLoading) return <p>Fetching User</p>;
 
   return (
     <UserContext.Provider
-      value={{ currentUser, login, signup, logout, updateProfile }}
+      value={{ currentUser, login, signup, logout, updateProfile, applicationIDs, apply }}
     >
       {/* <BrowserRouter> */}
       <div className="App">

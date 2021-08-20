@@ -15,8 +15,8 @@ class JoblyApi {
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
-    console.debug("API Call:", endpoint, data, method);
 
+    console.debug("API Call:", endpoint, data, method);
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
     const params = method === "get" ? data : {};
@@ -94,6 +94,12 @@ class JoblyApi {
     const {username} =  jwt.decode(this.token)
     const res  =  await this.request(`users/${username}`, profileInfo, "patch")
     return res.user
+  }
+
+  static async apply(jobID){
+    const {username} =  jwt.decode(this.token)
+    const res  =  await this.request(`users/${username}/jobs/${jobID}`, {}, "post")
+    return res
   }
 
   // obviously, you'll add a lot here ...

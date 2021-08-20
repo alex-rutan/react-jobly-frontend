@@ -67,9 +67,8 @@ function App() {
   async function updateProfile(profileInfo) {
     // setAuthUserInfo(userInfo);
     const user = await JoblyApi.updateProfile(profileInfo);
-    setCurrentUser(user)
+    setCurrentUser(user);
   }
-
 
   function logout() {
     setCurrentUser(null);
@@ -77,11 +76,12 @@ function App() {
     localStorage.removeItem("jobly-token");
   }
 
-  
   if (!isLoading) return <p>Fetching User</p>;
 
   return (
-    <UserContext.Provider value={{ currentUser, login, signup, logout, updateProfile }}>
+    <UserContext.Provider
+      value={{ currentUser, login, signup, logout, updateProfile }}
+    >
       {/* <BrowserRouter> */}
       <div className="App">
         <Nav />

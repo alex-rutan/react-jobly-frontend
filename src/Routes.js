@@ -1,9 +1,5 @@
 import { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-// import CompanyDetails from "./CompanyDetails";
-// import CompaniesContainer from "./CompaniesContainer";
-// import JobsContainer from "./JobsContainer";
-// import ProfileForm from "./ProfileForm";
 import CompanyDetails from "./CompanyDetails";
 import CompaniesContainer from "./CompaniesContainer";
 import JobsContainer from "./JobsContainer";
@@ -11,7 +7,6 @@ import ProfileForm from "./ProfileForm";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import HomePage from "./HomePage";
-import PrivateRoute from "./PrivateRoute"
 import UserContext from "./UserContext";
 
 function Routes() {

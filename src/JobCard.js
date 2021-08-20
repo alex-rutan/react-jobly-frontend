@@ -17,10 +17,11 @@ function JobCard({ job }) {
     evt.preventDefault()
     apply(job.id)
   }
+ 
   
   //TODO FIX SO IT WORKS WITH SET
-  const application = [...applicationIDs] 
-  let btn =  application.includes(job.id)
+  
+  let btn =  applicationIDs.has(job.id)
       ?<div> APPLIED </div>
       :<button onClick={handleApply}> APPLY</button>
    

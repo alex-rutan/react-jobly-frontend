@@ -38,7 +38,7 @@ function App() {
           let user = await JoblyApi.getUserInfo(username);
           setCurrentUser(user);
           setIsloading(true);
-          setApplicationIDs(user.applications)
+          setApplicationIDs(new Set(user.applications))
         }
       }
       getCurrUserResponse();
@@ -75,7 +75,7 @@ function App() {
   async function apply(jobID) {
     // setAuthUserInfo(userInfo);
     await JoblyApi.apply(jobID);
-    setApplicationIDs(new Set([...applicationIDs, jobID]));
+    setApplicationIDs(new Set( [...applicationIDs, jobID]  ));
   }
 
   function logout() {

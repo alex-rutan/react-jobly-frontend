@@ -8,6 +8,7 @@ function ProfileForm() {
   
   const { currentUser, updateProfile } = useContext(UserContext);
 
+
   const [profileInfo, setProfileInfo] = useState({
     firstName: currentUser.firstName,
     lastName: currentUser.lastName,
@@ -28,7 +29,7 @@ function ProfileForm() {
     updateProfile(profileInfo)
     // if(currentUser) history.push("/companies")
   }
-
+  //add password field and labels
   return (
     <div className="ProfileForm" style={{ padding: "8px" }}>
       <form className="Profile-page" onSubmit={handleSubmit}>
@@ -63,6 +64,7 @@ function ProfileForm() {
           id="Profile-password"
           name="password"
           className="form-control"
+          type="password"
           onChange={handleChange}
           value={profileInfo.password}
         />

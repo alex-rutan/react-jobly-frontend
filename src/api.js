@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import jwt from "jsonwebtoken";
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 /** API Class.
@@ -76,7 +76,7 @@ class JoblyApi {
   static async register(userData) {
     const res = await this.request("auth/register", userData, "post");
 
-    console.log(res, " JOBLYAPI signup")
+    // console.log(res, " JOBLYAPI signup")
     // console.log("ABOUT TO SET JOBLY API TOKEN")
     // this.token = res.token;
     return res.token;
@@ -85,8 +85,15 @@ class JoblyApi {
   static async getUserInfo(username) {
     const res = await this.request(`users/${username}`, username);
 
-    console.log(res, " JOBLYAPI getUser");
+    // console.log(res, " JOBLYAPI getUser");
     return res.user;
+  }
+  
+  //updates userinfo
+  static async updateProfile(profileInfo){
+    const {username} =  jwt.decode(this.token)
+    const res  =  await this.request(`users/${username}`, profileInfo, "patch")
+    return res.user
   }
 
   // obviously, you'll add a lot here ...

@@ -5,11 +5,14 @@ import { useHistory } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import JoblyApi from "./api";
 import UserContext from "./UserContext";
-import jwt from 'jsonwebtoken'
+import jwt from "jsonwebtoken";
 
 function App() {
   const [currentUser, setCurrentUser] = useState();
-  const [token, setToken] = useState(localStorage.getItem("jobly-token") || null);
+  const [token, setToken] = useState(
+    localStorage.getItem("jobly-token") || null
+  );
+  const [isLoading, setIsloading] = useState(false);
 
   const history = useHistory();
 
@@ -19,9 +22,10 @@ function App() {
       if (token === null) {
         localStorage.removeItem("jobly-token");
       } else {
-        localStorage.setItem("jobly-token", token)
+        localStorage.setItem("jobly-token", token);
       }
-    }, [token]
+    },
+    [token]
   );
 
   useEffect(
@@ -29,9 +33,10 @@ function App() {
       async function getCurrUserResponse() {
         if (token) {
           JoblyApi.token = token;
-          const { username } = jwt.decode(token)
+          const { username } = jwt.decode(token);
           let user = await JoblyApi.getUserInfo(username);
           setCurrentUser(user);
+          setIsloading(true);
         }
       }
       getCurrUserResponse();
@@ -59,14 +64,24 @@ function App() {
     }
   }
 
+  async function updateProfile(profileInfo) {
+    // setAuthUserInfo(userInfo);
+    const user = await JoblyApi.updateProfile(profileInfo);
+    setCurrentUser(user)
+  }
+
+
   function logout() {
     setCurrentUser(null);
     setToken(null);
     localStorage.removeItem("jobly-token");
   }
 
+  
+  if (!isLoading) return <p>Fetching User</p>;
+
   return (
-    <UserContext.Provider value={{ currentUser, login, signup, logout }}>
+    <UserContext.Provider value={{ currentUser, login, signup, logout, updateProfile }}>
       {/* <BrowserRouter> */}
       <div className="App">
         <Nav />

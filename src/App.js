@@ -73,7 +73,6 @@ function App() {
   }
 
   async function apply(jobID) {
-    // setAuthUserInfo(userInfo);
     await JoblyApi.apply(jobID);
     setApplicationIDs(new Set( [...applicationIDs, jobID]  ));
   }
@@ -85,6 +84,7 @@ function App() {
   }
 
   console.log(applicationIDs ,"APPPPPP")
+  
   if (!isLoading) return <p>Fetching User</p>;
 
   return (

@@ -65,20 +65,14 @@ class JoblyApi {
   }
 
   static async login(loginUserData) {
-    const res = await this.request("auth/token", loginUserData, "post");
-
-    console.log(res, " JOBLYAPI login")
-    // console.log("ABOUT TO SET JOBLY API TOKEN")
-    // this.token = res.token;
-    return res.token;
+      const res = await this.request("auth/token", loginUserData, "post");
+      console.log("INSIDE API LOGIN", res, "SPACE", res.token)
+      return res.token;
   }
 
   static async register(userData) {
     const res = await this.request("auth/register", userData, "post");
-
-    // console.log(res, " JOBLYAPI signup")
-    // console.log("ABOUT TO SET JOBLY API TOKEN")
-    // this.token = res.token;
+    console.log("INSIDE API REGISTER", res,"SPACE", res.token)
     return res.token;
   }
 

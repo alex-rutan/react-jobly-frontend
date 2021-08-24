@@ -17,7 +17,6 @@ function App() {
 
   const history = useHistory();
 
-  /**updates currentuser if valid token */
   useEffect(
     function setLocalStorageToken() {
       if (token === null) {
@@ -29,35 +28,33 @@ function App() {
     [token]
   );
 
+  /**updates currentuser if valid token */
   useEffect(
     function getCurrUser() {
       async function getCurrUserResponse() {
-        if (token) {
+        if (token !== null) {
           JoblyApi.token = token;
           const { username } = jwt.decode(token);
           let user = await JoblyApi.getUserInfo(username);
           setCurrentUser(user);
-          setIsloading(true);
           setApplicationIDs(new Set(user.applications))
         }
+        setIsloading(true);
       }
       getCurrUserResponse();
     },
     [token]
   );
 
-  //make requests in the login/singup
+  //make requests in the login/signup
   async function login(loginUserInfo) {
-    // setAuthUserInfo(loginUserInfo);
-    const newToken = await JoblyApi.login(loginUserInfo);
-    if (newToken) {
-      setToken(newToken);
+      const response = await JoblyApi.login(loginUserInfo);
+      console.log("INSIDE APP AT LOGIN", response)
+      setToken(response);
       history.push("/companies");
-    }
   }
 
   async function signup(userInfo) {
-    // setAuthUserInfo(userInfo);
     const newToken = await JoblyApi.register(userInfo);
 
     if (newToken) {
@@ -67,7 +64,6 @@ function App() {
   }
 
   async function updateProfile(profileInfo) {
-    // setAuthUserInfo(userInfo);
     const user = await JoblyApi.updateProfile(profileInfo);
     setCurrentUser(user);
   }

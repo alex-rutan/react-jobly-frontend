@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
 import UserContext from "./UserContext";
-// import { useHistory } from "react-router-dom";
+import Alert from "./Alert";
 
 function LoginForm() {
-  // let history = useHistory()
   const { login } = useContext(UserContext);
   const [loginInfo, setLoginInfo] = useState({ username: "", password: "" });
+  const [formError, setFormError] = useState(null);
+
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -16,11 +17,14 @@ function LoginForm() {
   }
 
   // Sends search back to parent component
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    login(loginInfo);
-    // console.log(currentUser, "LOGIN FORM")
-    // if(currentUser) history.push("/companies")
+    try {
+      await login(loginInfo);
+    } catch (err) {
+      console.log("FORM ERROR", err)
+      setFormError(err);
+    }
   }
 
   return (
@@ -48,6 +52,7 @@ function LoginForm() {
         />
         <button>Log In</button>
       </form>
+      { formError !== null ? <Alert type="danger" messages={formError} /> : null}
     </div>
   );
 }

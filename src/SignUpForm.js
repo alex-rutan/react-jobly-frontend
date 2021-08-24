@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import UserContext from "./UserContext";
-// import { useHistory } from "react-router-dom";
+import Alert from "./Alert";
 
 function SignUpForm() {
-  // let history = useHistory()
   const { signup } = useContext(UserContext);
+  const [formError, setFormError] = useState(null);
   const [signUpInfo, setSignUpInfo] = useState({
     username: "",
     password: "",
@@ -20,11 +20,15 @@ function SignUpForm() {
       [name]: value,
     }));
   }
+
   // Sends search back to parent component
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    signup(signUpInfo);
-    // if(currentUser) history.push("/companies")
+    try {
+      await signup(signUpInfo);
+    } catch(err) {
+      setFormError(err);
+    }
   }
 
   return (
@@ -77,6 +81,7 @@ function SignUpForm() {
         />
         <button>Log In</button>
       </form>
+      {formError !== null ? <Alert type="danger" messages={["Sign up failed. Password must be 5 characters long and email must be valid email."]}/> : null}
     </div>
   );
 }

@@ -5,7 +5,7 @@ import UserContext from "./UserContext";
 
 function ProfileForm() {
   // let history = useHistory()
-  
+
   const { currentUser, updateProfile } = useContext(UserContext);
 
 
@@ -13,7 +13,7 @@ function ProfileForm() {
     firstName: currentUser.firstName,
     lastName: currentUser.lastName,
     email: currentUser.email,
-    password:""
+    password: ""
   });
 
   function handleChange(evt) {
@@ -31,45 +31,61 @@ function ProfileForm() {
   }
   //add password field and labels
   return (
-    <div className="ProfileForm" style={{ padding: "8px" }}>
-      <form className="Profile-page" onSubmit={handleSubmit}>
-        <h3>username</h3>
-        <h4>{currentUser.username}</h4>
-        <input
-          style={{ width: "400px" }}
-          id="Profile-first-name"
-          name="firstName"
-          className="form-control"
-          onChange={handleChange}
-          value={profileInfo.firstName}
-        />
-        <input
-          style={{ width: "400px" }}
-          id="Profile-last-name"
-          name="lastName"
-          className="form-control"
-          onChange={handleChange}
-          value={profileInfo.lastName}
-        />
-        <input
-          style={{ width: "400px" }}
-          id="Profile-email"
-          name="email"
-          className="form-control"
-          onChange={handleChange}
-          value={profileInfo.email}
-        />
-        <input
-          style={{ width: "400px" }}
-          id="Profile-password"
-          name="password"
-          className="form-control"
-          type="password"
-          onChange={handleChange}
-          value={profileInfo.password}
-        />
-        <button>Update</button>
-      </form>
+    <div className="ProfileForm" style={{ width: "50%", padding: "8px", margin: "10% auto" }}>
+      <div className="card" style={{}}>
+        <form className="Profile-page" onSubmit={handleSubmit}>
+          <h1>Profile</h1>
+          <h3>username</h3>
+          <p>{currentUser.username}</p>
+          <div style={{ display: "flex", alignItems: "center", padding: "10px"  }}>
+            <label htmlFor="firstName">First Name:</label>
+            <input
+              style={{ width: "400px" }}
+              id="Profile-first-name"
+              name="firstName"
+              className="form-control"
+              onChange={handleChange}
+              value={profileInfo.firstName}
+            />
+          </div>
+          <div style={{ display: "flex", alignItems: "center", padding: "10px"  }}>
+            <label htmlFor="lastName">Last Name:</label>
+            <input
+              style={{ width: "400px" }}
+              id="Profile-last-name"
+              name="lastName"
+              className="form-control"
+              onChange={handleChange}
+              value={profileInfo.lastName}
+            />
+          </div>
+          <div style={{ display: "flex", alignItems: "center", padding: "10px"  }}>
+            <label htmlFor="email">Email:</label>
+            <input
+              style={{ width: "400px" }}
+              id="Profile-email"
+              name="email"
+              className="form-control"
+              onChange={handleChange}
+              value={profileInfo.email}
+            />
+          </div>
+          <div style={{ display: "flex", alignItems: "center", padding: "10px" }}>
+            <label htmlFor="password">Password:</label>
+            <input
+              style={{ width: "400px" }}
+              id="Profile-password"
+              name="password"
+              className="form-control"
+              type="password"
+              onChange={handleChange}
+              value={profileInfo.password}
+            />
+          </div>
+          <button>Update</button>
+        </form>
+      </div>
+
     </div>
   );
 }

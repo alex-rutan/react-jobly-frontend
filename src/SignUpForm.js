@@ -79,7 +79,7 @@ function SignUpForm() {
           onChange={handleChange}
           value={signUpInfo.email}
         />
-        <button>Log In</button>
+        <button>Sign Up</button>
       </form>
       {formError !== null ? <Alert type="danger" messages={["Sign up failed. Password must be 5 characters long and email must be valid email."]}/> : null}
     </div>

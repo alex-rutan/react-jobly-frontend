@@ -1,0 +1,24 @@
+.HomePage {
+    position: relative;
+    text-align: center;
+}
+
+.HomePage-body {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(BackgroundImage.jpg) ;
+    background-size: cover;
+}
+  
+.HomePage-welcome {
+    position: absolute;
+    margin-top: 15em;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    background-color:azure;
+    border-radius: 5px;
+    padding: 2em;
+    box-shadow: 1px 1px 5px rgb(49, 49, 49);
+}
+

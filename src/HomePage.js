@@ -16,7 +16,7 @@ function HomePage() {
     <div className="HomePage">
       <div className="HomePage-body">
 
-        {currentUser ?
+        { currentUser ?
           <div className="HomePage-welcome container">
             <h1>Jobly</h1>
             <p>All the jobs in one, convenient place.</p>
@@ -24,7 +24,7 @@ function HomePage() {
               <button className="btn btn-primary me-2">Browse Companies</button>
             </NavLink>
             <NavLink exact to="/jobs">
-              <button className="btn btn-primary">Browse Jobs</button>
+              <button className="btn btn-primary me-2">Browse Jobs</button>
             </NavLink>
           </div>
           :
@@ -35,7 +35,7 @@ function HomePage() {
               <button className="btn btn-primary me-2">Sign Up</button>
             </NavLink>
             <NavLink exact to="/login">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-primary me-2">Login</button>
             </NavLink>
           </div>
         }

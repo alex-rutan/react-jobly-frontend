@@ -1,9 +1,18 @@
+import "./Alert.css"
+
+/** Alert: alert component, used to create a flash message alert of provided type
+ *
+ *  Props: type, messages
+ */
+
 function Alert({ type, messages }) {
   if (type === null) return null;
 
   return (
-    <div className={`Alert alert alert-${type}`} role="alert">
-      {messages.map(m => <p>{m}</p>)}
+    <div className={`alert alert-${type}`}>
+      <strong>
+        {messages.map((m, i) => <p key={i}>{m}</p>)}
+      </strong>
     </div>
   )
 }

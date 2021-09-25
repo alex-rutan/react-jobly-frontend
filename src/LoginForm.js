@@ -1,6 +1,13 @@
 import React, { useState, useContext } from "react";
 import UserContext from "./UserContext";
 import Alert from "./Alert";
+import "./LoginForm.css"
+
+/** LoginForm: Login page that presents form that takes in a username 
+ *  and password to run authentication.
+ *
+ *  State: login, loginInfo, formError
+ */
 
 function LoginForm() {
   const { login } = useContext(UserContext);
@@ -28,31 +35,51 @@ function LoginForm() {
   }
 
   return (
-    <div className="LoginForm" style={{ padding: "8px" }}>
-      <form className="Login-page" onSubmit={handleSubmit}>
-        <input
-          style={{ width: "400px" }}
-          id="Login-username"
-          name="username"
-          className="form-control"
-          placeholder="Username"
-          onChange={handleChange}
-          value={loginInfo.username}
-          required
-        />
-        <input
-          style={{ width: "400px" }}
-          id="Login-password"
-          name="password"
-          className="form-control"
-          placeholder="Password"
-          onChange={handleChange}
-          value={loginInfo.password}
-          required
-        />
-        <button>Log In</button>
-      </form>
-      { formError !== null ? <Alert type="danger" messages={formError} /> : null}
+    <div className="LoginForm">
+      <div className="LoginForm-body">
+        <div className="LoginForm-form card">
+          <form className="Login-page" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <legend className="form-title">Login</legend>
+              <div className="form-floating mb-3">
+                <input
+                  id="floatingUsername"
+                  name="username"
+                  type="username"
+                  className="form-control"
+                  placeholder="Username"
+                  onChange={handleChange}
+                  value={loginInfo.username}
+                  required
+                />
+                <label htmlFor="floatingUsername">Username</label>
+              </div>
+              <div className="form-floating">
+                <input
+                  id="floatingPassword"
+                  name="password"
+                  type="password"
+                  className="form-control"
+                  placeholder="Password"
+                  onChange={handleChange}
+                  value={loginInfo.password}
+                  required
+                />
+                <label htmlFor="floatingPassword">Password</label>
+              </div>
+            </div>
+            <button className="btn btn-primary me-2">Login</button>
+          </form>
+          {formError !== null ?
+            <Alert
+              className="alert"
+              type="danger"
+              messages={formError} />
+            :
+            null
+          }
+        </div>
+      </div>
     </div>
   );
 }

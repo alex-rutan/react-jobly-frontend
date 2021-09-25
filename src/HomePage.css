@@ -1,12 +1,15 @@
 .HomePage {
     position: relative;
     text-align: center;
+    z-index: 1;
 }
 
 .HomePage-body {
+    position: relative;
     height: 100vh;
     width: 100vw;
     background-image: url(BackgroundImage.jpg) ;
+    background-repeat: no-repeat;
     background-size: cover;
 }
   
@@ -17,8 +20,12 @@
     transform: translate(-50%, -50%);
     width: auto;
     background-color:azure;
-    border-radius: 5px;
+    border-radius: .5em;
     padding: 2em;
     box-shadow: 1px 1px 5px rgb(49, 49, 49);
+}
+
+button {
+  margin: .5em;
 }
 

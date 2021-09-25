@@ -1,0 +1,7 @@
+.Nav {
+  z-index: 2;
+  position: relative;
+  box-shadow: 1px 1px 20px rgb(70, 64, 95);
+}
+
+

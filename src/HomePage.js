@@ -3,7 +3,12 @@ import { NavLink } from "react-router-dom";
 import UserContext from "./UserContext";
 import "./HomePage.css"
 
-//TODO renders out text while login or asks to login or signup if no currentuser
+
+/** Homepage: homepage/landing page
+ *
+ *  State: currentUser
+ */
+
 function HomePage() {
   const { currentUser } = useContext(UserContext);
 

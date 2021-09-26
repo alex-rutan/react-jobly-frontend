@@ -11,7 +11,16 @@ function Alert({ type, messages }) {
   return (
     <div className={`alert alert-${type}`}>
       <strong>
-        {messages.map((m, i) => <p key={i}>{m}</p>)}
+        { messages.map((m, i) =>
+          <p key={i}>
+            {m.startsWith("instance.") ?
+            m.slice(9)
+            :
+            m
+          }
+          </p> 
+          )
+        } 
       </strong>
     </div>
   )

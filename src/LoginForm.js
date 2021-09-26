@@ -3,10 +3,12 @@ import UserContext from "./UserContext";
 import Alert from "./Alert";
 import "./LoginForm.css"
 
+
 /** LoginForm: Login page that presents form that takes in a username 
  *  and password to run authentication.
  *
- *  State: login, loginInfo, formError
+ *  State: loginInfo, formError
+ *  Context: login
  */
 
 function LoginForm() {
@@ -54,7 +56,7 @@ function LoginForm() {
                 />
                 <label htmlFor="floatingUsername">Username</label>
               </div>
-              <div className="form-floating">
+              <div className="form-floating mb-3">
                 <input
                   id="floatingPassword"
                   name="password"

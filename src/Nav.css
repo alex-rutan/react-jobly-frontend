@@ -4,4 +4,12 @@
   box-shadow: 1px 1px 20px rgb(70, 64, 95);
 }
 
+.navbar-brand {
+  margin: 0 1em;
+}
+
+.nav-item {
+  margin: 0 .25em;
+}
+
 

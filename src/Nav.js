@@ -35,7 +35,7 @@ function Nav() {
               </div>
               <div className="nav-item">
                 <NavLink exact to="/profile" className="nav-link">
-                  Profile
+                  Edit Profile
                 </NavLink>
               </div>
             </div>

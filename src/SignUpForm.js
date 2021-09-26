@@ -13,13 +13,13 @@ import "./SignUpForm.css"
 
 function SignUpForm() {
   const { signup } = useContext(UserContext);
-  const [formError, setFormError] = useState(null);
-  const [signUpInfo, setSignUpInfo] = useState({
+  const [ formError, setFormError ] = useState(null);
+  const [ signUpInfo, setSignUpInfo ] = useState({
     username: "",
     password: "",
     firstName: "",
     lastName: "",
-    email: "",
+    email: ""
   });
 
   function handleChange(evt) {
@@ -77,7 +77,6 @@ function SignUpForm() {
                 <input
                   id="floatingFirstName"
                   name="firstName"
-                  // type="firstName"
                   className="form-control"
                   placeholder="First Name"
                   onChange={handleChange}
@@ -90,7 +89,6 @@ function SignUpForm() {
                 <input
                   id="floatingLastName"
                   name="lastName"
-                  // type="lastName"
                   className="form-control"
                   placeholder="Last Name"
                   onChange={handleChange}
@@ -105,7 +103,7 @@ function SignUpForm() {
                   name="email"
                   type="email"
                   className="form-control"
-                  placeholder="Last Name"
+                  placeholder="Email"
                   onChange={handleChange}
                   value={signUpInfo.email}
                   required

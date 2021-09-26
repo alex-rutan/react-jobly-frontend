@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import CompanyDetails from "./CompanyDetails";
 import CompaniesContainer from "./CompaniesContainer";
 import JobsContainer from "./JobsContainer";
-import ProfileForm from "./ProfileForm";
+import EditProfileForm from "./EditProfileForm";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import HomePage from "./HomePage";
@@ -27,7 +27,7 @@ function Routes() {
             <JobsContainer />
           </Route>
           <Route exact path="/profile">
-            <ProfileForm />
+            <EditProfileForm />
           </Route>
           <Route exact path="/">
             <HomePage />

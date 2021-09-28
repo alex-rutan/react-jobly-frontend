@@ -1,14 +1,29 @@
 
 .CompanyCard {
-  margin: auto;
+  align-items: center;
 }
 
 .CompanyCard a {
-  color: #000000;
   text-decoration: none;
+  color: black
 }
 
-.CompanyCard a:hover {
-  color: #646464;
-  text-decoration: none;
+.card {
+  border-radius: .5em;
+  margin: 1em 10em;
+  width: auto;
+  box-shadow: 1px 1px 3px rgb(124, 124, 124);
+  background-color: azure;
+}
+
+.card:hover {
+  color: #0000007c;
+}
+
+img {
+  margin: .5em;
+  width: 6em;
+  height: 4em;
+  border-radius: .5em;
+  position: absolute;
 }

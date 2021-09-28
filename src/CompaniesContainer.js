@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import JoblyApi from "./api";
 import SearchForm from "./SearchForm";
 import CompanyList from "./CompanyList";
+import "./CompaniesContainer.css"
+
 
 /**
- * Handles SearchForm and CompaniesList
+ * CompaniesContainer: Displays SearchForm and CompaniesList
  *
  *  state: searchTerm, companiesList
  */
+
 function CompaniesContainer() {
   const [searchTerm, setSearchTerm] = useState("");
   const [companiesList, setCompaniesList] = useState([]);
@@ -40,5 +43,6 @@ function CompaniesContainer() {
     </div>
   );
 }
+
 
 export default CompaniesContainer;

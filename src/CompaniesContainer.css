@@ -1,0 +1,11 @@
+.CompaniesContainer {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+    padding-top: 5em;
+    background-image: url(BackgroundImage.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}

@@ -39,7 +39,7 @@ function LoginForm() {
   return (
     <div className="LoginForm">
       <div className="LoginForm-body">
-        <div className="LoginForm-form card">
+        <div className="LoginForm-form card mx-auto">
           <form className="Login-page" onSubmit={handleSubmit}>
             <div className="form-group">
               <legend className="form-title">Login</legend>

@@ -1,7 +1,14 @@
 .Nav {
   z-index: 2;
-  position: relative;
+  position: fixed;
   box-shadow: 1px 1px 20px rgb(70, 64, 95);
+  width: 100%;
+  background-color: white;
+}
+
+.navbar {
+  width: 100%;
+  background-color: white;
 }
 
 .navbar-brand {

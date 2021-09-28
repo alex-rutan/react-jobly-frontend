@@ -7,6 +7,7 @@ import JoblyApi from "./api";
 import UserContext from "./UserContext";
 import jwt from "jsonwebtoken";
 
+
 function App() {
   const [currentUser, setCurrentUser] = useState();
   const [token, setToken] = useState(
@@ -46,7 +47,6 @@ function App() {
     [token]
   );
 
-  //make requests in the login/signup
   async function login(loginUserInfo) {
       const response = await JoblyApi.login(loginUserInfo);
       console.log("INSIDE APP AT LOGIN", response)
@@ -85,14 +85,19 @@ function App() {
 
   return (
     <UserContext.Provider
-      value={{ currentUser, login, signup, logout, updateProfile, applicationIDs, apply }}
-    >
-      {/* <BrowserRouter> */}
+      value={{ 
+        currentUser, 
+        login, 
+        signup, 
+        logout, 
+        updateProfile, 
+        applicationIDs, 
+        apply 
+      }}>
       <div className="App">
         <Nav />
         <Routes />
       </div>
-      {/* </BrowserRouter> */}
     </UserContext.Provider>
   );
 }

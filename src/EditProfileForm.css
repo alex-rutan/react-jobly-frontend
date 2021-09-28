@@ -13,10 +13,10 @@
     background-size: cover;
 }
   
-.EditProfileForm-form {
+.EditProfileForm-card {
     position: absolute;
     align-items: center;
-    margin-top: 22em;
+    margin-top: 25em;
     left: 50%;
     transform: translate(-50%, -50%);
     width: auto;
@@ -41,5 +41,4 @@ button {
 
 .alert {
   margin: .5em;
-  
 }

@@ -17,7 +17,7 @@ function HomePage() {
       <div className="HomePage-body">
 
         { currentUser ?
-          <div className="HomePage-welcome container">
+          <div className="HomePage-welcome container mx-auto">
             <h1>Jobly</h1>
             <p>All the jobs in one, convenient place.</p>
             <NavLink exact to="/companies">
@@ -28,7 +28,7 @@ function HomePage() {
             </NavLink>
           </div>
           :
-          <div className="HomePage-welcome container">
+          <div className="HomePage-welcome container mx-auto">
             <h1>Jobly</h1>
             <p>All the jobs in one, convenient place.</p>
             <NavLink exact to="/signup">

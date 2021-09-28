@@ -42,7 +42,7 @@ function EditProfileForm() {
   return (
     <div className="EditProfileForm">
       <div className="EditProfileForm-body">
-        <div className="EditProfileForm-form card">
+        <div className="EditProfileForm-card card mx-auto">
           <form className="EditProfile-page" onSubmit={handleSubmit}>
             <div className="form-group">
               <legend className="form-title">Edit Profile</legend>

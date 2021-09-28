@@ -43,7 +43,7 @@ function SignUpForm() {
   return (
     <div className="SignUpForm">
       <div className="SignUpForm-body">
-        <div className="SignUpForm-form card">
+        <div className="SignUpForm-form card mx-auto">
           <form className="SignUp-page" onSubmit={handleSubmit}>
             <div className="form-group">
               <legend className="form-title">Sign Up</legend>

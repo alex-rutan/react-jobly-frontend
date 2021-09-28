@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import JoblyApi from "./api";
 import SearchForm from "./SearchForm";
 import JobList from "./JobList";
+import "./JobsContainer.css"
 
 /**
  * Handles SearchForm and JobsList

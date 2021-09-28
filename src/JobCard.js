@@ -1,38 +1,63 @@
-import React,{useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
+import JoblyApi from "./api";
 import "./JobCard.css";
 import UserContext from "./UserContext";
+
+
 /**
  * renders UI for a job
- * props: job{title,salary,equity,companyHandle}
+ * 
+ * props: job: {title,salary,equity,companyHandle}
+ * context: applicationIDs, apply
  *
  * [JobsContainer, JobList] -> JobCard
  * 
  */
 
-//TODO add application button
 function JobCard({ job }) {
-  const { applicationIDs ,apply } = useContext(UserContext);
+  const { applicationIDs, apply } = useContext(UserContext);
+  const [ company, setCompany ] = useState(null);
 
-  function handleApply(evt){
+  useEffect(
+    function getCompany() {
+      async function getCompanyResponse() {
+        let company = await JoblyApi.getCompany(job.companyHandle);
+        setCompany(company.name);
+        //TODO add loading spinner?
+      }
+      getCompanyResponse();
+    },
+    [job.companyHandle]
+  );
+
+  function handleApply(evt) {
     evt.preventDefault()
     apply(job.id)
   }
- 
-  
+
+
   //TODO FIX SO IT WORKS WITH SET
-  
-  let btn =  applicationIDs.has(job.id)
-      ?<div> APPLIED </div>
-      :<button onClick={handleApply}> APPLY</button>
-   
+
+  // let btn = applicationIDs.has(job.id)
+  //     ?<div> APPLIED </div>
+  //     :<button onClick={handleApply}> APPLY</button>
+
   return (
-    <div className="JobCard card" style={{padding: "8px"}}>
+    <div className="JobCard card" style={{ padding: "8px" }}>
       <div className="card-body">
         <h1 className="card-title">{job.title}</h1>
-        <p className="card-text">{job.companyHandle}</p>
+        <p className="card-text">{company}</p>
         <p className="card-text"> Salary: {job.salary}</p>
-        <p className="card-text">Equity: {job.equity}</p>
-        {btn}
+        {job.equity !== null ?
+          <p className="card-text">Equity: {job.equity}</p>
+          :
+          null
+        }
+        {applicationIDs.has(job.id) ?
+          <div> APPLIED </div>
+          :
+          <button className="btn btn-primary me-2" onClick={handleApply}> Apply to Job</button>
+        }
       </div>
     </div>
   );

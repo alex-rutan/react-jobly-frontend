@@ -1,6 +1,5 @@
 import React from "react";
 import CompanyCard from "./CompanyCard";
-import "./CompanyList.css"
 
 /**
  * Rec'd a List of companies and maps out CompanyCards.

@@ -1,6 +1,7 @@
 
 .JobCard {
-  margin: auto;
+  /* margin: auto; */
+  align-items: center;
 }
 
 .JobCard a {
@@ -8,7 +9,10 @@
   text-decoration: none;
 }
 
-.JobCard a:hover {
-  color: #646464;
-  text-decoration: none;
+.card {
+  border-radius: .5em;
+  margin: 1em 10em;
+  width: auto;
+  box-shadow: 1px 1px 3px rgb(124, 124, 124);
+  background-color: white;
 }

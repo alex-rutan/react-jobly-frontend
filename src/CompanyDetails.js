@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "./api";
 import JobList from "./JobList";
+import "./CompanyDetails.css"
 
 /**
  * Passes through a List of Job from the company specified by the param
@@ -31,7 +32,7 @@ function CompanyDetails() {
   if (!jobs) return <p>Fetching Jobs</p>;
 
   return (
-    <div>
+    <div className="CompanyDetails">
       <JobList jobs={jobs} />
     </div>
   );

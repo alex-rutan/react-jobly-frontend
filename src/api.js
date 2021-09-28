@@ -78,14 +78,12 @@ class JoblyApi {
 
   static async getUserInfo(username) {
     const res = await this.request(`users/${username}`, username);
-
-    // console.log(res, " JOBLYAPI getUser");
     return res.user;
   }
   
   //updates userinfo
   static async updateProfile(profileInfo){
-    const {username} =  jwt.decode(this.token)
+    const { username } =  jwt.decode(this.token)
     const res  =  await this.request(`users/${username}`, profileInfo, "patch")
     return res.user
   }
@@ -96,7 +94,6 @@ class JoblyApi {
     return res
   }
 
-  // obviously, you'll add a lot here ...
 }
 
 // for now, put token ("testuser" / "password" on class)

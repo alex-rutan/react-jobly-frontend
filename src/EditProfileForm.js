@@ -4,7 +4,7 @@ import Alert from "./Alert";
 import "./EditProfileForm.css"
 
 /** SignUpForm: Sign up page that presents form that takes in all
- *  needed information to create a new user instance in our database.
+ *  needed information to create a revised user instance in our database.
  *
  *  State: profileInfo, formError
  *  Context: currentUser, updateProfile
@@ -17,7 +17,7 @@ function EditProfileForm() {
     firstName: currentUser.firstName,
     lastName: currentUser.lastName,
     email: currentUser.email,
-    password: ""
+    password: currentUser.password
   });
 
   function handleChange(evt) {
@@ -31,12 +31,12 @@ function EditProfileForm() {
   // Sends search back to parent component
   async function handleSubmit(evt) {
     evt.preventDefault();
-    try {
-      await updateProfile(profileInfo)
-      setFormError([])
-    } catch (err) {
-    setFormError(err)
-    }
+      try {
+        await updateProfile(profileInfo);
+        setFormError([]);
+      } catch (err) {
+        setFormError(err);
+      }
   }
 
   return (
@@ -88,7 +88,7 @@ function EditProfileForm() {
               <p>Enter password to save changes:</p>
               <div className="form-floating mb-3">
                 <input
-                  id="floatingPassword"
+                  id="floatingPassword1"
                   name="password"
                   type="password"
                   className="form-control"
@@ -97,7 +97,7 @@ function EditProfileForm() {
                   value={profileInfo.password}
                   required
                 />
-                <label htmlFor="floatingPassword">Password</label>
+                <label htmlFor="floatingPassword1">Password</label>
               </div>
             </div>
             <button className="btn btn-primary me-2">Save Changes</button>

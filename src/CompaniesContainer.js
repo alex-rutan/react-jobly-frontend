@@ -33,11 +33,7 @@ function CompaniesContainer() {
   }
 
   return (
-    <div className="CompaniesContainer" style={{
-      display: "flex",
-      alignItems: "center",
-      flexDirection: "column"
-    }}>
+    <div className="CompaniesContainer">
         <SearchForm initialSearch={searchTerm} handleSearch={handleSearch} formType="company" />
         <CompanyList companies={companiesList} />
     </div>

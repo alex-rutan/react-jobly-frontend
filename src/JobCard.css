@@ -16,3 +16,7 @@
   box-shadow: 1px 1px 3px rgb(124, 124, 124);
   background-color: white;
 }
+
+.applied {
+  color: #0275d8;
+}

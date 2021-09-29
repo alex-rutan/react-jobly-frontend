@@ -16,7 +16,7 @@
   background-color: white;
 }
 
-.card:hover {
+.CompanyCard a:hover {
   color: #0000007c;
 }
 

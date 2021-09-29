@@ -36,12 +36,6 @@ function JobCard({ job }) {
   }
 
 
-  //TODO FIX SO IT WORKS WITH SET
-
-  // let btn = applicationIDs.has(job.id)
-  //     ?<div> APPLIED </div>
-  //     :<button onClick={handleApply}> APPLY</button>
-
   return (
     <div className="JobCard card" style={{ padding: "8px" }}>
       <div className="card-body">
@@ -54,7 +48,7 @@ function JobCard({ job }) {
           null
         }
         {applicationIDs.has(job.id) ?
-          <div> APPLIED </div>
+          <strong className="applied"> APPLIED </strong>
           :
           <button className="btn btn-primary me-2" onClick={handleApply}> Apply to Job</button>
         }

@@ -32,11 +32,7 @@ function JobsContainer() {
   }
 
   return (
-    <div className="CompaniesContainer" style={{
-      display: "flex",
-      alignItems: "center",
-      flexDirection: "column"
-    }}>
+    <div className="JobsContainer">
       <SearchForm initialSearch={searchTerm} handleSearch={handleSearch} formType="job"/>
       <JobList jobs={jobsList} />
     </div>

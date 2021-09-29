@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./SearchForm.css";
 
 /**
  *Renders and control form for search value to be used in parent componene's filter
@@ -23,10 +24,9 @@ function SearchForm({ initialSearch, handleSearch, formType }) {
   }
 
   return (
-    <div className="SearchForm" style={{padding: "8px"}}>
+    <div className="SearchForm search-container">
       <form className="Search-bar" onSubmit={handleSubmit}>
         <input
-          style={{width: '600px'}}
           id="search-bar-query"
           name="search-bar"
           className="form-control"

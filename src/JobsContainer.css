@@ -7,7 +7,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    display: "flex";
+    /* display: "flex";
     align-items: "center";
-    flex-direction: "column";
+    flex-direction: "column"; */
 }

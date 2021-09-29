@@ -37,7 +37,7 @@ function JobCard({ job }) {
 
 
   return (
-    <div className="JobCard card" style={{ padding: "8px" }}>
+    <div className="JobCard card">
       <div className="card-body">
         <h1 className="card-title">{job.title}</h1>
         <p className="card-text">{company}</p>

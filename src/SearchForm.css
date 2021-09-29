@@ -1,0 +1,9 @@
+.search-container {
+  padding: 1em;
+}
+
+.SearchForm input {
+  width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+}

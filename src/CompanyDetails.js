@@ -14,6 +14,7 @@ import "./CompanyDetails.css"
  *  state:  jobs store whole company in state
  * add prop for company details
  */
+
 function CompanyDetails() {
   const { handle } = useParams();
   const [jobs, setJobs] = useState(null);

@@ -2,11 +2,10 @@
     position: relative;
     text-align: center;
     z-index: 1;
-    padding-top: 5em;
+    padding-top: 7em;
+    padding-bottom: 2em;
     background-image: url(BackgroundImage.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    padding-bottom: 1em;
-
 }

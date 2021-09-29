@@ -17,6 +17,7 @@ function SearchForm({ initialSearch, handleSearch, formType }) {
   function handleChange(evt) {
     const { value } = evt.target;
     setSearch(value);
+    handleSubmit(evt);
   }
 
   // Sends search back to parent component

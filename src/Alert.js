@@ -1,3 +1,5 @@
+"use strict"
+
 import "./Alert.css"
 
 /** Alert: alert component, used to create a flash message alert of provided type

@@ -1,3 +1,5 @@
+"use strict"
+
 import { Route } from "react-router-dom";
 import CompanyDetails from "./CompanyDetails";
 import CompaniesContainer from "./CompaniesContainer";

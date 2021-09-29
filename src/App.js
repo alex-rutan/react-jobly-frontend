@@ -1,3 +1,5 @@
+"use strict"
+
 import "./App.css";
 import Nav from "./Nav";
 import Routes from "./Routes";

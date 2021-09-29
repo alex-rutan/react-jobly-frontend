@@ -1,3 +1,5 @@
+"use strict"
+
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";

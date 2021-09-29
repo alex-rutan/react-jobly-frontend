@@ -1,3 +1,5 @@
+"use strict"
+
 import React from "react";
 import CompanyCard from "./CompanyCard";
 

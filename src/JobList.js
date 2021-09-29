@@ -10,7 +10,7 @@ import JobCard from "./JobCard";
 //TODO use uuid for key
 function JobList({ jobs }) {
   return (
-    <div>
+    <div className="row">
       {jobs.map((j) => (
         <JobCard key={j.id} job={j} />
       ))}

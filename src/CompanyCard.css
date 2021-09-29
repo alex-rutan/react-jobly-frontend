@@ -1,17 +1,12 @@
 
-.CompanyCard {
-  align-items: center;
-}
-
 .CompanyCard a {
   text-decoration: none;
   color: black
 }
 
-.card {
+.company-card {
   border-radius: .5em;
-  margin: 1em 10em;
-  width: auto;
+  margin: 2em 10em;
   box-shadow: 1px 1px 3px rgb(124, 124, 124);
   background-color: white;
 }

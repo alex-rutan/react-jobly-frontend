@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import JoblyApi from "./api";
-import "./JobCard.css";
 import UserContext from "./UserContext";
+import "./JobCard.css";
 
 
 /**
@@ -37,21 +37,23 @@ function JobCard({ job }) {
 
 
   return (
-    <div className="JobCard card">
-      <div className="card-body">
-        <h1 className="card-title">{job.title}</h1>
-        <p className="card-text">{company}</p>
-        <p className="card-text"> Salary: {job.salary}</p>
-        {job.equity !== null ?
-          <p className="card-text">Equity: {job.equity}</p>
-          :
-          null
-        }
-        {applicationIDs.has(job.id) ?
-          <strong className="applied"> APPLIED </strong>
-          :
-          <button className="btn btn-primary me-2" onClick={handleApply}> Apply to Job</button>
-        }
+    <div className="JobCard col-lg-6">
+      <div className="card job-card">
+        <div className="card-body">
+          <h2 className="card-title">{job.title}</h2>
+          <p className="card-text">Company: {company}</p>
+          <p className="card-text"> Salary: {job.salary}</p>
+          {job.equity !== null ?
+            <p className="card-text">Equity: {job.equity}</p>
+            :
+            null
+          }
+          {applicationIDs.has(job.id) ?
+            <strong className="applied"> APPLIED </strong>
+            :
+            <button className="btn btn-primary me-2 job-btn" onClick={handleApply}> Apply to Job</button>
+          }
+        </div>
       </div>
     </div>
   );

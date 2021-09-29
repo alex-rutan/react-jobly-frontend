@@ -20,7 +20,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: auto;
-    background-color:azure;
+    background-color:rgb(245, 255, 255);
     border-radius: .5em;
     padding: 2em;
     box-shadow: 1px 1px 5px rgb(49, 49, 49);
